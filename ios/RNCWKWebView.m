@@ -43,6 +43,7 @@ static NSURLCredential* clientAuthenticationCredential;
   UIColor * _savedBackgroundColor;
   BOOL _savedHideKeyboardAccessoryView;
   BOOL _savedKeyboardDisplayRequiresUserAction;
+  BOOL _savedAlphaEnabled;
   
   // Workaround for StatusBar appearance bug for iOS 12
   // https://github.com/react-native-community/react-native-webview/issues/62
@@ -230,6 +231,7 @@ static NSURLCredential* clientAuthenticationCredential;
     [self addSubview:_webView];
     [self setHideKeyboardAccessoryView: _savedHideKeyboardAccessoryView];
     [self setKeyboardDisplayRequiresUserAction: _savedKeyboardDisplayRequiresUserAction];
+    [self setAlphaEnabled: _savedAlphaEnabled];
     [self visitSource];
   }
 }
@@ -323,6 +325,22 @@ static NSURLCredential* clientAuthenticationCredential;
   _webView.scrollView.backgroundColor = backgroundColor;
   _webView.backgroundColor = backgroundColor;
 }
+
+- (void)setAlphaEnabled:(BOOL)alphaEnabled {
+    
+    NSLog(@"Bool value alphaEnabled: %d",alphaEnabled);
+    if (_webView == nil) {
+        _savedAlphaEnabled = alphaEnabled;
+        return;
+    }
+    
+    if (_savedAlphaEnabled == false) {
+        return;
+    } else {
+        _webView.alpha = 0.7f;
+    }
+}
+
 
 /**
  * This method is called whenever JavaScript running within the web view calls:

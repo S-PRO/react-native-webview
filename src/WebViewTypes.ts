@@ -242,6 +242,7 @@ export interface AndroidNativeWebViewProps extends CommonNativeWebViewProps {
   overScrollMode?: OverScrollModeType;
   saveFormDataDisabled?: boolean;
   textZoom?: number;
+  alphaEnabled?: boolean;
   thirdPartyCookiesEnabled?: boolean;
   urlPrefixesForDefaultIntent?: ReadonlyArray<string>;
 }
@@ -258,6 +259,7 @@ export interface IOSNativeWebViewProps extends CommonNativeWebViewProps {
   directionalLockEnabled?: boolean;
   hideKeyboardAccessoryView?: boolean;
   incognito?: boolean;
+  alphaEnabled?: boolean;
   pagingEnabled?: boolean;
   scrollEnabled?: boolean;
   useSharedProcessPool?: boolean;
@@ -301,6 +303,7 @@ export interface IOSWebViewProps extends WebViewSharedProps {
    * @platform ios
    */
   scrollEnabled?: boolean;
+  alphaEnabled?: boolean;
 
   /**
    * If the value of this property is true, the scroll view stops on multiples
@@ -476,6 +479,7 @@ export interface AndroidWebViewProps extends WebViewSharedProps {
    * @platform android
    */
   javaScriptEnabled?: boolean;
+  alphaEnabled?: boolean;
 
   /**
    * Boolean value to disable Hardware Acceleration in the `WebView`. Used on Android only

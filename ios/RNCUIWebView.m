@@ -144,6 +144,10 @@ RCT_NOT_IMPLEMENTED(- (instancetype)initWithCoder:(NSCoder *)aDecoder)
                       updateOffset:NO];
 }
 
+- (void)setAlphaEnabled:(BOOL)alphaEnabled {
+    _webView.alpha = alphaEnabled ? 0.7f : 1.0f;
+}
+
 - (void)setScalesPageToFit:(BOOL)scalesPageToFit
 {
   if (_webView.scalesPageToFit != scalesPageToFit) {

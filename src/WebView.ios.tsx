@@ -86,7 +86,7 @@ class WebView extends React.Component<IOSWebViewProps, State> {
       didWarnAboutUIWebViewUsage = true;
       console.warn(
         'UIWebView is deprecated and will be removed soon, please use WKWebView (do not override useWebkit={true} prop),'
-          + ' more infos here: https://github.com/react-native-community/react-native-webview/issues/312',
+        + ' more infos here: https://github.com/react-native-community/react-native-webview/issues/312',
       );
     }
     if (
@@ -324,9 +324,9 @@ class WebView extends React.Component<IOSWebViewProps, State> {
       scalesPageToFit = this.props.useWebKit ? undefined : true,
       style,
       useWebKit,
+      alphaEnabled,
       ...otherProps
     } = this.props;
-
     let otherView = null;
 
     if (this.state.viewState === 'LOADING') {
@@ -346,13 +346,6 @@ class WebView extends React.Component<IOSWebViewProps, State> {
     }
 
     const webViewStyles = [styles.container, styles.webView, style];
-    if (
-      this.state.viewState === 'LOADING'
-      || this.state.viewState === 'ERROR'
-    ) {
-      // if we're in either LOADING or ERROR states, don't show the webView
-      webViewStyles.push(styles.hidden);
-    }
 
     const onShouldStartLoadWithRequest = createOnShouldStartLoadWithRequest(
       this.onShouldStartLoadWithRequestCallback,
@@ -386,6 +379,7 @@ class WebView extends React.Component<IOSWebViewProps, State> {
         onShouldStartLoadWithRequest={onShouldStartLoadWithRequest}
         ref={this.webViewRef}
         scalesPageToFit={scalesPageToFit}
+        alphaEnabled={alphaEnabled}
         // TODO: find a better way to type this.
         source={resolveAssetSource(this.props.source as ImageSourcePropType)}
         style={webViewStyles}

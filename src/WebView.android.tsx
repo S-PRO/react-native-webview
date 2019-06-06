@@ -52,6 +52,7 @@ class WebView extends React.Component<AndroidWebViewProps, State> {
     allowFileAccess: false,
     saveFormDataDisabled: false,
     cacheEnabled: true,
+    alphaEnabled: false,
     androidHardwareAccelerationDisabled: false,
     originWhitelist: defaultOriginWhitelist,
   };
@@ -221,6 +222,7 @@ class WebView extends React.Component<AndroidWebViewProps, State> {
       renderLoading,
       source,
       style,
+      alphaEnabled,
       nativeConfig = {},
       ...otherProps
     } = this.props;
@@ -244,13 +246,6 @@ class WebView extends React.Component<AndroidWebViewProps, State> {
     }
 
     const webViewStyles = [styles.container, styles.webView, style];
-    if (
-      this.state.viewState === 'LOADING'
-      || this.state.viewState === 'ERROR'
-    ) {
-      // if we're in either LOADING or ERROR states, don't show the webView
-      webViewStyles.push(styles.hidden);
-    }
 
     if (source && 'method' in source) {
       if (source.method === 'POST' && source.headers) {
@@ -288,6 +283,7 @@ class WebView extends React.Component<AndroidWebViewProps, State> {
         source={resolveAssetSource(source as ImageSourcePropType)}
         style={webViewStyles}
         {...nativeConfig.props}
+        alphaEnabled={alphaEnabled}
       />
     );
 

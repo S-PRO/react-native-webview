@@ -220,6 +220,13 @@ public class RNCWebViewManager extends SimpleViewManager<WebView> {
     view.getSettings().setJavaScriptEnabled(enabled);
   }
 
+  @ReactProp(name = "alphaEnabled")
+  public void setAlphaToWebView(WebView view, boolean alpha) {
+    if (alpha) {
+      view.setAlpha(0.9f);
+    }
+  }
+
   @ReactProp(name = "showsHorizontalScrollIndicator")
   public void setShowsHorizontalScrollIndicator(WebView view, boolean enabled) {
     view.setHorizontalScrollBarEnabled(enabled);
@@ -449,7 +456,7 @@ public class RNCWebViewManager extends SimpleViewManager<WebView> {
     }
     export.put(TopLoadingProgressEvent.EVENT_NAME, MapBuilder.of("registrationName", "onLoadingProgress"));
     export.put(TopShouldStartLoadWithRequestEvent.EVENT_NAME, MapBuilder.of("registrationName", "onShouldStartLoadWithRequest"));
-    export.put(ScrollEventType.SCROLL.getJSEventName(), MapBuilder.of("registrationName", "onScroll"));
+    export.put(ScrollEventType.getJSEventName(ScrollEventType.SCROLL), MapBuilder.of("registrationName", "onScroll"));
     return export;
   }
 
