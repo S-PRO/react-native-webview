@@ -335,6 +335,7 @@ static NSURLCredential* clientAuthenticationCredential;
     }
     
     if (_savedAlphaEnabled == false) {
+        _webView.alpha = alphaEnabled ? 0.7f : 1.0f;
         return;
     } else {
         _webView.alpha = 0.7f;
