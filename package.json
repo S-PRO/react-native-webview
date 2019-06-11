@@ -52,6 +52,10 @@
     "semantic-release": "15.10.3",
     "typescript": "3.3.3333"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/S-PRO/react-native-webview.git"
+  },
   "files": [
     "android",
     "ios",
